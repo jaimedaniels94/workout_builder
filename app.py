@@ -30,5 +30,34 @@ def index():
         workouts = Workout.query.all()
         return render_template('index.html', workouts=workouts)
 
+@app.route('/delete/<int:id>')
+def delete(id):
+    exercise_to_delete = Workout.query.get_or_404(id)
+
+    try:
+        db.session.delete(exercise_to_delete)
+        db.session.commit()
+        return redirect('/')
+    except:
+        return 'There was a problem deleting the exercise'
+
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    workout = Workout.query.get_or_404(id)
+
+    if request.method == 'POST':
+        workout.exercise = request.form['exercise']
+        workout.reps = request.form['reps']
+
+        try:
+            db.session.commit()
+            return redirect('/')
+
+        except:
+            return 'There was a problem updating the exercise'
+    else:
+        return render_template('update.html', workout=workout)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
