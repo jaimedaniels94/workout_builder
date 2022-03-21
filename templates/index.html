@@ -1,31 +1,51 @@
 {% extends 'base.html' %} {% block head %} <title>Workout Builder</title>{%
 endblock %} {% block body %}
 <div class="content">
-  <h1>Workout Builder</h1>
+  <header>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Workout Builder</a>
+    </nav>
+  </header>
 
-  <table>
-    <tr>
-      <th>Exercise</th>
-      <th>Reps</th>
-      <th>Actions</th>
-    </tr>
-    {% for workout in workouts %}
-    <tr>
-      <td>{{ workout.exercise }}</td>
-      <td>{{ workout.reps }}</td>
-      <td>
-        <a href="/delete/{{workout.id}}">Delete</a>
-        <br />
-        <a href="/update/{{workout.id}}">Update</a>
-      </td>
-    </tr>
-    {% endfor %}
+  <table class="table table-striped table-borderless">
+    <thead>
+      <tr>
+        <th scope="col">Exercise</th>
+        <th scope="col">Reps</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for workout in workouts %}
+      <tr>
+        <td scope="row">{{ workout.exercise }}</td>
+        <td>{{ workout.reps }}</td>
+        <td>
+          <a href="/delete/{{workout.id}}" class="btn btn-outline-danger btn-sm"
+            >Delete</a
+          >
+
+          <a
+            href="/update/{{workout.id}}"
+            class="btn btn-outline-secondary btn-sm"
+            >Update</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
   </table>
   <div class="form">
     <form action="/" method="POST">
-      <input type="text" name="exercise" id="exercise" />
-      <input type="number" name="reps" id="reps" />
-      <input type="submit" value="Add Exercise" />
+      <div class="form-group">
+        <label for="exercise">Exercise</label>
+        <input type="text" class="form-control" name="exercise" id="exercise" />
+      </div>
+      <div class="form-group">
+        <label for="reps">Number of Reps</label>
+        <input type="number" class="form-control" name="reps" id="reps" />
+      </div>
+      <input type="submit" class="btn btn-success" value="Add Exercise" />
     </form>
   </div>
 </div>

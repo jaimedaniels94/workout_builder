@@ -1,17 +1,30 @@
 {% extends 'base.html' %} {% block head %} <title>Workout Builder</title>{%
 endblock %} {% block body %}
 <div class="content">
-  <h1>Update Workout</h1>
-  <div class="form">
+  <header>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Workout Builder</a>
+    </nav>
+  </header>
+  <div class="form-update">
     <form action="/update/{{workout.id}}" method="POST">
+      <label for="exercise">Exercise</label>
       <input
         type="text"
         name="exercise"
         id="exercise"
+        class="form-control"
         value="{{workout.exercise}}"
       />
-      <input type="number" name="reps" id="reps" value="{{workout.reps}}" />
-      <input type="submit" value="Update" />
+      <label for="reps">Reps</label>
+      <input
+        type="number"
+        name="reps"
+        id="reps"
+        value="{{workout.reps}}"
+        class="form-control"
+      />
+      <input type="submit" class="btn btn-success" value="Update" />
     </form>
   </div>
 </div>

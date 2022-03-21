@@ -1,0 +1,30 @@
+.form,
+.form-update {
+  width: 20%;
+  margin: auto;
+}
+
+.form-update {
+  margin: 2rem auto;
+}
+
+.btn.btn-success {
+  margin: 1rem auto;
+  display: block;
+}
+
+.table {
+  width: 75%;
+  margin: 2rem auto;
+  margin-bottom: 4rem;
+}
+
+label {
+  display: block;
+  text-align: center;
+}
+
+td,
+th {
+  text-align: center;
+}
