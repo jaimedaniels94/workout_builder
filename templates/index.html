@@ -14,9 +14,9 @@ endblock %} {% block body %}
       <td>{{ workout.exercise }}</td>
       <td>{{ workout.reps }}</td>
       <td>
-        <a href="">Delete</a>
+        <a href="/delete/{{workout.id}}">Delete</a>
         <br />
-        <a href="">Update</a>
+        <a href="/update/{{workout.id}}">Update</a>
       </td>
     </tr>
     {% endfor %}
